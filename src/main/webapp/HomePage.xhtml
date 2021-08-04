@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="file.css" />
+	<h:outputStylesheet name="css/file.css" />
+	<title>Starbucks - Home</title>
+
+</h:head>
+<h:body>
+	<ui:decorate template="layout.xhtml">
+		<ui:define name="content">
+		</ui:define>
+	</ui:decorate>
+	<p:panelGrid columns="2" layout="grid"
+		style="width:100%;margin:30px 15px;display: block;break-before: always;">
+		<p:graphicImage library="imagens" name="Oficial.png" />
+
+		<h:outputText
+			value="Conforme abrimos nossas lojas, permanecemos no compromisso com a saúde e bem-estar de nossos partners e consumidores."
+			styleClass="Texto" />
+
+	</p:panelGrid>
+
+	<p:panelGrid columns="3" layout="grid" style="width:100%;margin:30px 15px;display: block;break-before: always;">
+		<p:graphicImage library="imagens" name="funcionarios.png"
+			styleClass="Texto" />
+		<h:outputText
+			value="Venha fazer parte da nossa equipe, por gentileza cadastre o funcionário."
+			styleClass="Texto" />
+		<p:linkButton outcome="/Index.xhtml" value="Cadastrar Funcionarios"
+			style="background-color:#7FFFD4;width:100%;margin:10px 0px;">
+			<f:param name="/Index.xhtml" />
+		</p:linkButton>
+
+		<p:graphicImage library="imagens" name="cargo.png" />
+		<h:outputText
+			value="Com a evolução da tecnologia novos cargos surgem a todo momento, por gentileza cadastrar um novo cargo."
+			styleClass="Texto" />
+		<p:linkButton outcome="/Cargo.xhtml" value="Cadastrar Cargos"
+			style="margin-right:20px;background-color:orange;width:100%;margin:10px 0px;">
+			<f:param name="/Cargo.xhtml" />
+		</p:linkButton>
+
+		<p:graphicImage library="imagens" name="promover.png" />
+		<h:outputText
+			value="Quando o Colaborador se destaca como funcionário do mês ele merece uma promoção, por gentileza promovê-lo."
+			styleClass="Texto" />
+		<p:linkButton outcome="/Promocao.xhtml" value="Promover Funcionario"
+			style="margin-right:20px;background-color:#9932CC;width:100%;margin:10px 0px;">
+			<f:param name="/Promocao.xhtml" />
+		</p:linkButton>
+	</p:panelGrid>
+
+	<p:panelGrid style="width:100%;margin:30px 15px;display: block;break-before: always;">
+		<h:form id="form">
+			<p:carousel value="#{bean.funcionarios}"
+				headerText="Funcionarios Cadastrados" var="funcionarios"
+				itemStyle="text-align:center" responsive="true"
+				style="background-color:black;width:100%;margin:30px 15px;">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px; "
+					columnClasses="label,value" layout="grid">
+					<f:facet name="header">
+						<p:graphicImage library="imagens" name="bucks.png" />
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{funcionarios.id}" />
+
+					<h:outputText value="Nome:" />
+					<h:outputText value="#{funcionarios.nome}" />
+
+					<h:outputText value="Matricula:" />
+					<h:outputText value="#{funcionarios.matricula}" />
+
+					<h:outputText value="Cargo:" />
+					<h:outputText value="#{funcionarios.cargo.descricao}" />
+
+					<h:outputText value="Salario:" />
+					<h:outputText value="#{funcionarios.salario}" />
+				</p:panelGrid>
+
+			</p:carousel>
+
+		</h:form>
+	</p:panelGrid>
+
+</h:body>
+</html>

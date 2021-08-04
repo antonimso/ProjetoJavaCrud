@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="file.css" />
+	<title>Starbucks - Cargos</title>
+
+</h:head>
+<h:body>
+	<ui:decorate template="layout.xhtml">
+		<ui:define name="content">
+		</ui:define>
+	</ui:decorate>
+	<p:graphicImage library="imagens" name="Oficial.png" />
+	<h:form id="formCadastro">
+		<h1>Cadastrar Cargo</h1>
+
+
+		<p:panel header="Cadastro de Cargos">
+
+			<h:panelGrid columns="1" style="width:100%;margin:10px 0px;">
+				<p:outputLabel value="Codigo" for="codigo" />
+				<p:inputText value="#{beanc.cargo.codigo}" size="50" id="codigo"
+					placeholder="Informe seu codigo" required="true"
+					requiredMessage="O campo codigo é obrigatório" maxlength="10" />
+
+				<p:outputLabel value="Descricao" for="descricao" />
+				<p:inputText value="#{beanc.cargo.descricao}" size="50"
+					id="descricao" placeholder="Informe sua descrição" required="true"
+					requiredMessage="O campo descrição é obrigatório" maxlength="30" />
+
+				<p:commandButton value="Adicionar" action="#{beanc.salvar}"
+					update="@form :formTabela" />
+				<p:commandButton value="Cancelar" action="#{beanc.limpar}"
+					update="@form" process="@this" />
+			</h:panelGrid>
+
+			<p:linkButton outcome="/HomePage.xhtml" value="Voltar"
+				style="margin-right:20px;background-color:orange;">
+				<f:param name="/HomePage.xhtml" />
+			</p:linkButton>
+		</p:panel>
+	</h:form>
+
+	<h1>Lista de Cargos</h1>
+	<p:dataTable id="formTabela" border="1" var="item"
+		value="#{beanc.cargos}">
+
+		<p:column>
+			<f:facet name="header">Codigo</f:facet>
+		#{item.codigo}</p:column>
+		<p:column sortBy="#{item.descricao}" filterBy="#{item.descricao}"
+			filterMatchMode="contains">
+			<f:facet name="header">Descricao</f:facet>
+		#{item.descricao}
+		</p:column>
+
+		<p:linkButton outcome="/HomePage.xhtml" value="Funcionarios"
+			style="margin-right:20px;background-color:blue;">
+			<f:param name="/Index.xhtml" />
+		</p:linkButton>
+
+	</p:dataTable>
+</h:body>
+</html>

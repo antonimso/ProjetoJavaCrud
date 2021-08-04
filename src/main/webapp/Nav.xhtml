@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="file.css" />
+	<h:outputStylesheet name="css/file.css" />
+	<title>Nav</title>
+
+</h:head>
+	<h:body>
+		<ui:component>
+			<h:form>
+				<p:breadCrumb
+					style="font-weight: bold;font-size:18px;font-weight:700;text-align: center;
+			background: #DCDCDC;
+			margin:30px 15px;
+			width:auto;height: 50px;
+			border: 1px solid black;
+			break-after: always;">
+
+					<p:menuitem value="Categories" url="HomePage.xhtml" />
+					<p:menuitem value="CADASTRO" url="Index.xhtml" />
+					<p:menuitem value="CARGO" url="Cargo.xhtml" />
+					<p:menuitem value="PROMOVER" url="Promocao.xhtml" />
+
+				</p:breadCrumb>
+
+			</h:form>
+		</ui:component>
+		
+	</h:body>
+</html>
